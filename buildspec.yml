@@ -1,0 +1,40 @@
+version: 0.2
+ 
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+    commands:
+     
+  pre_build:
+    commands:
+      # Install dependencies needed
+      - echo "Starting Pre-Build Phase..."
+      - pip install --upgrade pip
+      - echo "Installing dependencies from requirements.txt..."
+      - pip install -r requirements.txt
+      - echo "Installing Pylint for Static Code Analysis..."
+      - pip install pylint
+ 
+  build:
+    commands:
+      - echo "Starting Build Phase..."
+      - echo Build started on `date`
+      - python manage.py migrate
+      - echo "Running Pylint..."
+      - pylint --disable=C *.py **/*.py --exit-zero
+      - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip
+      - unzip ./sonar-scanner-cli-5.0.1.3006-linux.zip
+      - export PATH=$PATH:$CODEBUILD_SRC_DIR/sonar-scanner-5.0.1.3006-linux/bin/
+      - sonar-scanner -Dsonar.organization=siddheshdeshmukh -Dsonar.projectKey=siddheshde_Automation_Project -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=62efa87690e265b8bb0446d1ca761e07fef4e320
+      - sleep 5
+      - curl https://sonarcloud.io/api/qualitygates/project_status?projectKey=techdevops_cdos-project > sonarreport.json
+ 
+  post_build:
+    commands:
+      - echo "Starting Post-Build Phase..."
+      - echo Build completed on `date`
+ 
+artifacts:
+  files:
+    - '**/*'

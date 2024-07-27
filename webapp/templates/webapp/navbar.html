@@ -1,0 +1,91 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #CC0000;">
+
+    <a class="navbar-brand main-heading" href="{% url '' %}" style="height: 40px;"> 
+  
+            
+      &nbsp; <strong> FlightOps </strong>
+    
+    </a>
+   
+  
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+  
+    </button>
+  
+  
+      <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
+  
+        
+        <ul class="navbar-nav mr-auto">
+  
+  
+          &nbsp;     &nbsp;     &nbsp; 
+  
+          {% if user.is_authenticated %}
+  
+            <li class="nav-item">
+        
+              <a class="nav-link" href="{% url 'dashboard' %}">Dashboard &nbsp;  </a>
+  
+            </li>
+  
+  
+            &nbsp;     &nbsp;     &nbsp; 
+  
+  
+            <li class="nav-item">
+  
+              <a class="nav-link" href="{% url 'user-logout' %}">Sign out &nbsp;  </a>
+  
+            </li>
+
+            <li class="nav-item">
+  
+              <a class="nav-link" href=""https://cppbucketsid-website.s3.amazonaws.com/index.html"">About &nbsp;  </a>
+  
+            </li>
+  
+  
+        </ul>
+  
+        {% else %}
+  
+        <li class="nav-item">
+  
+          <a class="nav-link" href="{% url 'register' %}"> Register </a>
+  
+        </li>
+  
+  
+        &nbsp;     &nbsp;     &nbsp; 
+  
+  
+        <li class="nav-item">
+  
+          <a class="nav-link" href="{% url 'my-login' %}">Login</a>
+  
+        </li>
+  
+  
+        {% endif %}
+      
+        
+      </div>
+  
+  
+  </nav>
+
+
+
+
+

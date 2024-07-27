@@ -1,0 +1,11 @@
+{% extends 'webapp/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="jumbotron text-center" style="background-image: url('https://media.defense.gov/2018/Sep/21/2002044549/2000/2000/0/180912-F-GV347-901.JPG'); background-size: cover; color: white; padding: 100px 25px;">
+    <h1 class="display-4"><strong>FlightOps</strong></h1>
+    <p class="lead">Your comprehensive flight management solution</p>
+    <a class="btn btn-danger btn-lg" type="button" href="{% url 'register' %}">Create your account &nbsp; <i class="fa fa-user-plus" aria-hidden="true"></i></a>>
+</div>
+
+{% endblock %}

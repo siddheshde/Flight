@@ -1,0 +1,24 @@
+{% extends 'webapp/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h3>Add a Flight</h3>
+        </div>
+        <div class="card-body">
+            <h6>Start adding in the required details for your records</h6>
+            <hr>
+            <form method="POST" autocomplete="off">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <br>
+                <button type="submit" class="btn btn-primary w-100 p-2">Create record &nbsp; <i class="fa fa-check" aria-hidden="true"></i></button>
+                <a href="{% url 'dashboard' %}" class="btn btn-secondary mt-2">Return &nbsp; <i class="fa fa-home" aria-hidden="true"></i></a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

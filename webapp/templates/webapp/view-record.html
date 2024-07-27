@@ -1,0 +1,45 @@
+{% extends 'webapp/base.html' %}
+
+{% block content %}
+
+    <div class="card">
+
+        <strong>
+
+            &nbsp;  &nbsp;
+
+            {{record.airways_name|upper}}
+            
+            {{record.flight_number}}
+
+        </strong>
+
+        <hr>
+
+        <div class="card-body">
+            <p> <strong> Flight Number:</strong> {{record.flight_number}}</p>
+            <p> <strong> Airways Name:</strong> {{record.airways_name}}</p>
+            <p> <strong> Departure Time:</strong> {{record.departure_time}}</p>
+            <p> <strong> Price of Ticket:</strong> {{record.price}}</p>
+            <p> <strong> Email:</strong> {{record.email}}</p>
+            <p> <strong> City:</strong> {{record.city}}</p>
+            <p> <strong> Province:</strong> {{record.province}}</p>
+            <p> <strong> Country:</strong> {{record.country}}</p>
+            <p> <strong> Date Joined:</strong> {{record.creation_date}}</p>
+        </div>  
+
+    </div>
+
+    <br>
+        
+    <a href="{% url 'dashboard' %}" class="btn btn-secondary"> Return </a>
+
+    &nbsp;
+
+    <a href="{% url 'update-record' record.id %}" class="btn btn-info"> Update record </a>
+
+    &nbsp;
+
+    <a href="{% url 'delete-record' record.id %}" class="btn btn-danger"> Delete </a>
+
+{% endblock %}
